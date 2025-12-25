@@ -1,0 +1,56 @@
+{
+  "name": "@thezelijah/majik-subscription",
+  "version": "1.0.0",
+  "description": "Majik Subscription is a fully-featured class representing a subscription-based offering in the Majik system, designed for recurring revenue modeling, cost tracking, and subscriber capacity planning. It provides utilities for computing MRR, ARR, revenue, profit, margins, Cost of Subscription (COS), and net income on a per-period basis. Chainable setter methods make it easy to construct and update subscriptions fluently.",
+  "license": "ISC",
+  "author": "Zelijah",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jedlsf/majik-subscription.git"
+  },
+ "keywords": [
+  "majik",
+  "majik-subscription",
+  "subscription-management",
+  "subscription-finance",
+  "cost-of-subscription",
+  "COS",
+  "revenue-calculation",
+  "profit-calculation",
+  "financial-modeling",
+  "capacity-planning",
+  "resource-planning",
+  "timesheet",
+  "billing",
+  "pricing",
+  "business-tools",
+  "typescript",
+  "javascript",
+  "enterprise-tools",
+  "monetary-calculation",
+  "majik-money",
+  "subscription-analytics",
+  "forecasting"
+],
+  "homepage": "https://github.com/jedlsf/majik-subscription#readme",
+  "bugs": {
+    "url": "https://github.com/jedlsf/majik-subscription/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@thezelijah/majik-money": "^1.0.3",
+    "nanoid": "^5.1.6",
+    "typescript": "^5.9.3"
+  }
+}
