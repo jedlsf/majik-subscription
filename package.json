@@ -1,6 +1,6 @@
 {
   "name": "@thezelijah/majik-subscription",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Majik Subscription is a fully-featured class representing a subscription-based offering in the Majik system, designed for recurring revenue modeling, cost tracking, and subscriber capacity planning. It provides utilities for computing MRR, ARR, revenue, profit, margins, Cost of Subscription (COS), and net income on a per-period basis. Chainable setter methods make it easy to construct and update subscriptions fluently.",
   "license": "ISC",
   "author": "Zelijah",
