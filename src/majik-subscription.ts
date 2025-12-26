@@ -26,6 +26,7 @@ import {
   dateToYYYYMM,
 } from "./utils";
 import {
+  BillingCycle,
   CapacityPeriodResizeMode,
   RateUnit,
   SubscriptionStatus,
@@ -213,6 +214,19 @@ export class MajikSubscription {
       amount,
       this.metadata.rate.amount.currency.code
     );
+    this.updateTimestamp();
+    this.markFinanceDirty();
+    return this;
+  }
+
+  /**
+   * Updates the billing cycle.
+   * @param {BillingCycle} cycle - New billing cycle (e.g., monthly, quarterly). use Enum `BillingCycle`.
+   * @returns {MajikSubscription} - Returns self for chaining.
+   */
+  setBillingCycle(cycle: BillingCycle): this {
+    this.rate.billingCycle = cycle;
+    this.metadata.rate.billingCycle = cycle;
     this.updateTimestamp();
     this.markFinanceDirty();
     return this;
