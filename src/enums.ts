@@ -1,37 +1,53 @@
-export enum SubscriptionStatus {
-    ACTIVE = "Active",
-    INACTIVE = "Inactive",
-    SUSPENDED = "Suspended",
-    CANCELLED = "Cancelled"
-}
+export const SubscriptionStatus = {
+  ACTIVE: "Active",
+  INACTIVE: "Inactive",
+  SUSPENDED: "Suspended",
+  CANCELLED: "Cancelled",
+} as const;
 
-export enum SubscriptionType {
-    RECURRING = "Recurring",
-    ONE_TIME = "One-Time",
-    TRIAL = "Trial"
-}
+export type SubscriptionStatus =
+  (typeof SubscriptionStatus)[keyof typeof SubscriptionStatus];
 
-export enum SubscriptionVisibility {
-    PUBLIC = "Public",
-    PRIVATE = "Private"
-}
+export const SubscriptionType = {
+  RECURRING: "Recurring",
+  ONE_TIME: "One-Time",
+  TRIAL: "Trial",
+} as const;
 
-export enum BillingCycle {
-    DAILY = "Daily",
-    WEEKLY = "Weekly",
-    MONTHLY = "Monthly",
-    QUARTERLY = "Quarterly",
-    YEARLY = "Yearly",
-}
+export type SubscriptionType =
+  (typeof SubscriptionType)[keyof typeof SubscriptionType];
 
-export enum RateUnit {
-    PER_SUBSCRIBER = "Per Subscriber",
-    PER_ACCOUNT = "Per Account",
-    PER_USER = "Per User",
-    PER_MONTH = "Per Month"
-}
+export const SubscriptionVisibility = {
+  PUBLIC: "Public",
+  PRIVATE: "Private",
+} as const;
 
-export enum CapacityPeriodResizeMode {
-  DEFAULT = "default", // trim or pad, keep per-month units
-  DISTRIBUTE = "distribute", // preserve total capacity, redistribute evenly
-}
+export type SubscriptionVisibility =
+  (typeof SubscriptionVisibility)[keyof typeof SubscriptionVisibility];
+
+export const BillingCycle = {
+  DAILY: "Daily",
+  WEEKLY: "Weekly",
+  MONTHLY: "Monthly",
+  QUARTERLY: "Quarterly",
+  YEARLY: "Yearly",
+} as const;
+
+export type BillingCycle = (typeof BillingCycle)[keyof typeof BillingCycle];
+
+export const RateUnit = {
+  PER_SUBSCRIBER: "Per Subscriber",
+  PER_ACCOUNT: "Per Account",
+  PER_USER: "Per User",
+  PER_MONTH: "Per Month",
+} as const;
+
+export type RateUnit = (typeof RateUnit)[keyof typeof RateUnit];
+
+export const CapacityPeriodResizeMode = {
+  DEFAULT: "default",
+  DISTRIBUTE: "distribute",
+} as const;
+
+export type CapacityPeriodResizeMode =
+  (typeof CapacityPeriodResizeMode)[keyof typeof CapacityPeriodResizeMode];

@@ -6,6 +6,7 @@ import {
 import {
   COSItem,
   ISODateString,
+  MajikSubscriptionJSON,
   MonthlyCapacity,
   ObjectType,
   StartDateInput,
@@ -1073,6 +1074,10 @@ export class MajikSubscription {
     return this.metadata.cos;
   }
 
+  get costBreakdown(): readonly COSItem[] {
+    return this.cos;
+  }
+
   /**
    * Returns COS for a specific month.
    * @param {YYYYMM} month - Month in YYYY-MM format.
@@ -1262,10 +1267,10 @@ export class MajikSubscription {
 
   /**
    * Converts the subscription instance to a plain JSON object.
-   * @returns {object} - Plain object representation.
+   * @returns {MajikSubscriptionJSON} - Plain object representation.
    */
-  toJSON(): object {
-    const preJSON = {
+  toJSON(): MajikSubscriptionJSON {
+    const preJSON: MajikSubscriptionJSON = {
       __type: "MajikSubscription",
       __object: "json",
       id: this.id,
@@ -1280,19 +1285,21 @@ export class MajikSubscription {
       metadata: this.metadata,
       settings: this.settings,
     };
-    return serializeMoney(preJSON);
+    return serializeMoney(preJSON) as MajikSubscriptionJSON;
   }
 
   /**
    * Parses a plain object or JSON string into a MajikSubscription instance.
-   * @param {string | object} json - JSON string or object.
+   * @param {string | MajikSubscriptionJSON} json - JSON string or object.
    * @returns {MajikSubscription} - Parsed subscription instance.
    * @throws {Error} - Throws if required properties are missing.
    */
-  static parseFromJSON(json: string | object): MajikSubscription {
-    const rawParse =
+  static parseFromJSON(
+    json: string | MajikSubscriptionJSON
+  ): MajikSubscription {
+    const rawParse: MajikSubscriptionJSON =
       typeof json === "string" ? JSON.parse(json) : structuredClone(json);
-    const parsedData = deserializeMoney(rawParse);
+    const parsedData: MajikSubscriptionJSON = deserializeMoney(rawParse);
 
     if (!parsedData.id) throw new Error("Missing required property: 'id'");
     if (!parsedData.timestamp)
@@ -1335,10 +1342,14 @@ export class MajikSubscription {
   }
 }
 
-export function isMajikSubscriptionClass(item: MajikSubscription): boolean {
+export function isMajikSubscriptionClass(
+  item: MajikSubscription | MajikSubscriptionJSON
+): boolean {
   return item.__object === "class";
 }
 
-export function isMajikSubscriptionJSON(item: MajikSubscription): boolean {
+export function isMajikSubscriptionJSON(
+  item: MajikSubscription | MajikSubscriptionJSON
+): boolean {
   return item.__object === "json";
 }

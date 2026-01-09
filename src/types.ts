@@ -7,7 +7,6 @@ import {
   SubscriptionVisibility,
 } from "./enums";
 
-
 export type ObjectType = "class" | "json";
 export type SubscriptionID = string;
 export type SubscriptionSKU = string;
@@ -109,4 +108,20 @@ export interface SubscriptionSettings {
   status: SubscriptionStatus;
   visibility: SubscriptionVisibility;
   system?: { isRestricted: boolean; restrictedUntil?: ISODateString };
+}
+
+export interface MajikSubscriptionJSON {
+  __type: "MajikSubscription";
+  __object: "json";
+  id: SubscriptionID;
+  slug: string;
+  name: string;
+  category: string;
+  rate: SubscriptionRate;
+  status: SubscriptionStatus;
+  type: SubscriptionType;
+  timestamp: ISODateString;
+  last_update: ISODateString;
+  metadata: SubscriptionMetadata;
+  settings: SubscriptionSettings;
 }
